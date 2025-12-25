@@ -825,22 +825,25 @@
       gap: 8px;
     }
 
-    /* ===== Bottom Nav ===== */
-    .bottom-nav {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 56px;
-      background: var(--nav-bg);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      border-radius: 16px 16px 0 0;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      z-index: 50;            /* immer über dem Content */
-      pointer-events: auto;
-    }
+   .bottom-nav{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  max-width: 600px;
+
+  height: 66px;              /* etwas höher fürs Handy */
+  background: #bfbfbf;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-radius: 16px 16px 0 0;
+  z-index: 9999;             /* immer über allem */
+  padding-bottom: env(safe-area-inset-bottom); /* iPhone Home-Bar */
+}
+
     body.dark .bottom-nav{
       border-top-color: rgba(255,255,255,0.08);
     }
@@ -2003,5 +2006,6 @@ Schreibe bitte:
 </script>
 </body>
 </html>
+
 
 
