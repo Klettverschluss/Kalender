@@ -915,6 +915,13 @@
     font-size: 1rem;
   }
 }
+/* iOS PWA: Eingabe-Felder müssen Fokus bekommen */
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+  touch-action: manipulation;
+}
 
   </style>
 </head>
@@ -2007,6 +2014,7 @@ Schreibe bitte:
 </script>
 </body>
 </html>
+
 
 
 
