@@ -1999,24 +1999,26 @@ Schreibe bitte:
       setActiveScreen(s);
     });
   });
-  // iOS PWA: sicherstellen, dass Inputs/Textareas fokussiert werden
-(function(){
+ <script>
+(function () {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   const isStandalone =
     window.navigator.standalone === true ||
     window.matchMedia("(display-mode: standalone)").matches;
 
-  if(!(isIOS && isStandalone)) return;
+  if (!(isIOS && isStandalone)) return;
 
-  function focusClosest(e){
+  function focusClosest(e) {
     const el = e.target.closest("input, textarea, select, [contenteditable='true']");
-    if(!el) return;
-    setTimeout(() => el.focus(), 0);
+    if (!el) return;
+    el.focus({ preventScroll: false }); // synchron = Tastatur öffnet sich
   }
 
-  document.addEventListener("touchend", focusClosest, true);
+  document.addEventListener("touchstart", focusClosest, true);
+  document.addEventListener("pointerdown", focusClosest, true);
   document.addEventListener("click", focusClosest, true);
 })();
+</script>
 
 
   // --- Start ---
@@ -2034,6 +2036,7 @@ Schreibe bitte:
 </script>
 </body>
 </html>
+
 
 
 
