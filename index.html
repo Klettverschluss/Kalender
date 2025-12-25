@@ -88,6 +88,7 @@
   padding: 0;
   height: 100%;
   background: #9d9dc1; /* gleiche Farbe wie .app */
+  overflow: hidden;
 }
 
 
@@ -107,7 +108,7 @@
     .screen {
       flex: 1;
       padding: 16px;
-      padding-bottom: 90px; /* Platz für Bottom-Bar */
+      padding-bottom: calc(66px +env (safe-area-inset-bottom)+16px);
       overflow-y: auto;
       display: none;
 
@@ -2006,6 +2007,7 @@ Schreibe bitte:
 </script>
 </body>
 </html>
+
 
 
 
