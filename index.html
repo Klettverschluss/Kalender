@@ -1999,6 +1999,25 @@ Schreibe bitte:
       setActiveScreen(s);
     });
   });
+  // iOS PWA: sicherstellen, dass Inputs/Textareas fokussiert werden
+(function(){
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isStandalone =
+    window.navigator.standalone === true ||
+    window.matchMedia("(display-mode: standalone)").matches;
+
+  if(!(isIOS && isStandalone)) return;
+
+  function focusClosest(e){
+    const el = e.target.closest("input, textarea, select, [contenteditable='true']");
+    if(!el) return;
+    setTimeout(() => el.focus(), 0);
+  }
+
+  document.addEventListener("touchend", focusClosest, true);
+  document.addEventListener("click", focusClosest, true);
+})();
+
 
   // --- Start ---
   loadStorage();
@@ -2015,6 +2034,7 @@ Schreibe bitte:
 </script>
 </body>
 </html>
+
 
 
 
