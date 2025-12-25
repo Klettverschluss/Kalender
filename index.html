@@ -922,13 +922,7 @@ input, textarea, [contenteditable="true"] {
   -webkit-touch-callout: default;
   touch-action: manipulation;
 }
-// iOS/PWA Fix: Klicks auf Eingabefelder dürfen nicht "durchklicken"
-["planInput", "editorText"].forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener("click", (e) => e.stopPropagation(), true);
-  el.addEventListener("touchstart", (e) => e.stopPropagation(), { passive: true, capture: true });
-});
+
 
   </style>
 </head>
@@ -2021,6 +2015,7 @@ Schreibe bitte:
 </script>
 </body>
 </html>
+
 
 
 
